@@ -47,3 +47,11 @@ Refs
 -------
 
 - [GitHub に登録しているSSH公開鍵を、自分のサーバにも登録する - pockestrap](http://pocke.hatenablog.com/entry/2015/11/27/144916) (Japanese Blog)
+
+
+License
+-------
+
+These codes are licensed under CC0.
+
+[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png "CC0")](http://creativecommons.org/publicdomain/zero/1.0/deed.en)

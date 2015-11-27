@@ -12,29 +12,36 @@ import (
 )
 
 func main() {
+	if err := Main(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+
+func Main() error {
 	var write bool
 	pflag.BoolVarP(&write, "write", "w", false, "write to ~/.ssh/authorized_keys")
 	pflag.Parse()
 
 	if len(pflag.Args()) == 0 {
-		fmt.Fprintln(os.Stderr, "Usage: gh-ssh-pubkey [-w] username [, username2...]")
-		os.Exit(1)
+		return fmt.Errorf("Usage: gh-ssh-pubkey [-w] username [, username2...]")
 	}
 
 	out, err := Out(write)
 	if err != nil {
-		panic(err)
+		return err
 	}
 	defer out.Close()
 
 	for _, name := range pflag.Args() {
 		keys, err := GetSSHKey(name)
 		if err != nil {
-			panic(err)
+			return err
 		}
 		fmt.Fprintf(out, "\n# from https://github.com/%s\n", name)
 		fmt.Fprint(out, keys)
 	}
+	return nil
 }
 
 func GetSSHKey(name string) (string, error) {

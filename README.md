@@ -41,3 +41,9 @@ $ gh-ssh-pubkey pocke -w
 # or
 $ gh-ssh-pubkey pocke --write
 ```
+
+
+Refs
+-------
+
+- [GitHub に登録しているSSH公開鍵を、自分のサーバにも登録する - pockestrap](http://pocke.hatenablog.com/entry/2015/11/27/144916) (Japanese Blog)
